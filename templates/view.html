@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View all books</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        body
+        {
+            text-align: center;
+        }
+        table, td, th 
+        {
+            border: 4px solid black;
+            border-collapse: collapse;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        h1
+        {
+            font-family: cursive;
+        }
+    </style>
+</head>
+<body>
+    <h1>Here you can view available books in detail!</h1>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Customer Dashboard</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="/handprofile"> Profile </a></li>
+                <li><a href="/handhistory"> History </a></li>
+                <li class="active"><a href="/viewbooks">Book list</a></li>
+                <li><a href="/handbrent"> Books for Rent </a></li>
+                <li><a href="/handbpurchase"> Books for Purchase </a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/logout"><span class="glyphicon glyphicon-user"></span> Logout </a></li>
+            </ul>
+        </div>
+    </nav><br>
+    
+        <table class="table table-bordered">
+            <tr>
+                <th><b>Book ID</b></th>
+                <th><b>Book Name</b></th>
+                <th><b>Author of Book</b></th>
+                <th><b>Number of Copies available</b></th>
+                <th><b>Catagory of Book (Genre)</b></th>
+                <th><b>Rent amount</b></th>
+                <th><b>Rent duration in days for book</b></th>
+                <th><b>Quality type for book</b></th>
+                <th><b>Purchase price for book</b></th>
+            </tr>
+            {% for i in entries %}
+                <tr>
+                    <td>{{i.book_id}}</td>
+                    <td>{{i.book_name}}</td>
+                    <td>{{i.author_name}}</td>
+                    <td>{{i.stock}}</td>
+                    <td>{{i.catagory}}</td>
+                    <td>{{i.rent_amount}}</td>
+                    <td>{{i.duration_in_days}}</td>
+                    <td>{{i.book_type}}</td>
+                    <td>{{i.price}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    <form action="/viewback" method="POST">
+        <input class="btn btn-primary" type="submit" name="submit" value = "Back"><br><br>
+    </form>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Signup page</title>
+</head>
+<body>
+    <h1>Create an account for Admins</h1>
+    <form action="/adminsignup" method="POST">
+        <label for="admin_name">Enter name of admin</label>
+        <input type="text" id="admin_name" name="admin_name" placeholder="Enter admin name" required><br>
+        <label for="mob_number">Enter admin's mobile number</label>
+        <input type="number" id="mob_number" name="mob_number" placeholder="Enter mobile number" required><br>
+        <label for="a_username">Set up username for admin</label>
+        <input type="text" id="a_username" name="a_username" placeholder="Enter admin username" required><br>
+        <label for="a_password">Set up password for admin</label>
+        <input type="password" id="a_password" name="a_password" placeholder="Enter admin password" required><br>
+        <label for="a_confpassword">Confirm the set up admin password</label>
+        <input type="password" id="a_confpassword" name="a_confpassword" placeholder="Confirm password" required><br>
+        <input type="submit" value="submit">
+    </form>
+</body>
+</html>

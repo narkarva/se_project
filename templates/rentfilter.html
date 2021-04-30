@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+<head>
+    <title>Search books for renting</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        body
+        {
+            text-align: center;
+        }
+        table, td, th 
+        {
+            border: 4px solid black;
+            border-collapse: collapse;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        input[type=text]
+        {
+            width: 40%;
+            padding: 12px;
+            border: 1px solid black;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        label 
+        {
+            font-size: 20px;
+            padding: 12px 12px 12px 0;
+            color: blue;
+            font-weight: bold;
+            display: inline-block;
+        }
+        .changepwd 
+        {
+            margin-left: 30%;
+            margin-right: 30%;
+            background-color: white;
+            border: 1px solid black;
+            opacity: 0.85;
+            margin-bottom: 20px;
+        }
+        h1
+        {
+            font-family: cursive;
+        }
+    </style>
+</head>
+<body>
+    <h1>Filter books for renting</h1>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Customer Dashboard</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="/handprofile"> Profile </a></li>
+                <li><a href="/handhistory"> History </a></li>
+                <li><a href="/viewbooks">Book list</a></li>
+                <li class="active"><a href="/handbrent"> Books for Rent </a></li>
+                <li><a href="/handbpurchase"> Books for Purchase </a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/logout"><span class="glyphicon glyphicon-user"></span> Logout </a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="changepwd">
+        {% for msg in get_flashed_messages() %}
+            <p style="color: red;"><b>{{ msg }}</b></p>
+        {% endfor %}<br>
+        <p>Enter values to search or filter</p>
+        <form action="/rentsearch" method = "POST"><br><br>
+            <label for="book_name">Search by book name : </label><br>
+            <input type = "text" name="book_name" id="book_name" placeholder="Enter book name"><br><br>
+            <label for="author_name">Search by author name : </label><br>
+            <input type="text" name="author_name" id="author_name" placeholder="Enter author name"><br><br>
+            <label for="catagory">Search by genre of book : </label><br>
+            <input type="text" name="catagory" id="catagory" placeholder="Enter genre of book"><br><br>
+            <input class="btn btn-primary" type="submit" name="submit" value="submit">
+            <input class="btn btn-primary" type="submit" name="submit" value="Back"><br><br>
+        </form>
+    </div>
+</body>
+</html>
+
+

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customer Dashboard</title>
+    <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        body
+        {
+            text-align: center;
+        }
+        h1
+        {
+            color: white;
+            background-color: gray;
+            font-family: cursive;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Customer Dashboard</h1>
+    {% for msg in get_flashed_messages() %}
+        <p style="color: red;"><b>{{ msg }}</b></p>
+    {% endfor %}
+    <!--<nav>
+        <a href="/handprofile">Profile</a>
+        <a href="/handhistory">History</a>
+        <a href="/viewbooks">View Books</a>
+        <a href="/handbrent">Books for Rent</a>
+        <a href="/handbpurchase">Books for Purchase</a>
+        <a href="/logout">Logout</a>
+    </nav>-->
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Customer Dashboard</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="/handprofile"> Profile </a></li>
+                <li><a href="/handhistory"> History </a></li>
+                <li><a href="/viewbooks">Book list</a></li>
+                <li><a href="/handbrent"> Books for Rent </a></li>
+                <li><a href="/handbpurchase"> Books for Purchase </a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/logout"><span class="glyphicon glyphicon-user"></span> Logout </a></li>
+            </ul>
+        </div>
+    </nav>
+    <div>
+    <div>
+        <img src="/static/cbooknew.jpg" style="width: 80%; height: 400px; margin-bottom: 20px;">
+    </div>
+    
+    <div style="font-family: 'Courier New', Courier, monospace; font-size: 20px;">
+        <p>Dear customer, we are glad to welcome you</p>
+        <p>Here are some of our policies, which we would appreciate if you abide by.</p>
+        <h3><b>Rules for purchasing books</b></h3>
+        <ul>
+            <li>Once a book purchased, it cannot be returned.</li>
+            <li>While selecting number of copies, be careful, once payment done, cannot be refunded.</li>
+            <li>Do check the quality of book available before purchasing, no further changes will be entered.</li>
+        </ul>
+        <h3><b>Rules for renting books</b></h3>
+        <ul>
+            <li>A rented book, if not recieved back in proper condition will lead to fine.</li>
+            <li>Rent duration for rent amount paid will be explicitly mentioned in book information.</li>
+            <li>You can rent only one book at a time.</li>
+            <li>Home delivery is expected to reach within 2 working days. Rent period starts after you recieve delivery.</li>
+            <li>Keeping book for more days than rent duration will lead to fine.</li>
+        </ul>
+    </div>
+    </div>
+</body>
+</html>

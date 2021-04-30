@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+<head>
+    <title>Update transaction details</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        body
+        {
+            text-align: center;
+        }
+        input[type=text], input[type=number]
+        {
+            width: 40%;
+            padding: 12px;
+            border: 1px solid black;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        label 
+        {
+            font-size: 20px;
+            padding: 12px 12px 12px 0;
+            color: blue;
+            font-weight: bold;
+            display: inline-block;
+        }
+        .changepwd 
+        {
+            margin-left: 30%;
+            margin-right: 30%;
+            background-color: white;
+            border: 1px solid black;
+            opacity: 0.85;
+            margin-bottom: 20px;
+        }
+        h1
+        {
+            font-family: cursive;
+        }
+    </style>
+</head>
+<body>
+    <h1>Update Transactions</h1>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Admin Dashboard</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="/a_handprofile"> View Profile </a></li>
+                <li><a href="/a_handbooks"> Add new books </a></li>
+                <li class="active"><a href="/fetchadm"> Update transaction details </a></li>
+                <li><a href="/a_seeall"> View all Transactions </a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/logout"><span class="glyphicon glyphicon-user"></span> Logout </a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="changepwd">
+        {% for msg in get_flashed_messages() %}
+            <p style="color: red;"><b>{{ msg }}</b></p>
+        {% endfor %}   
+        <form action="/fetchadmin" method="POST"><br><br>
+            <label for="transaction_id">Transaction ID</label><br>
+            <input type="number" name="transaction_id" id="transaction_id" placeholder="Enter book id"><br><br>
+            <label for="book_id">Book ID</label><br>
+            <input type="number" name="book_id" id="book_id" placeholder="Enter transaction id"><br><br>
+            <label for="customer_id">Customer ID</label><br>
+            <input type="number" name="customer_id" id="customer_id" placeholder="Enter customer id"><br><br>
+            <label for="delivery_status">Change delivery status</label><br>
+            <input type="text" name="delivery_status" id="delivery_status" placeholder="Enter delivery status"><br><br>
+            <input class="btn btn-primary" type="submit" name="button" value="Submit">
+            <input class="btn btn-primary" type="submit" name="button" value="Back"><br><br>    
+        </form>
+    </div> 
+</body>
+</html>

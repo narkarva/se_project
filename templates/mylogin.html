@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+    <!--<link rel="stylesheet" type="text/css" href="/static/forlogin.css">-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+        body 
+        {
+            background-image: url('/static/book.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            text-align: center;
+            background-position: center center;
+        }
+        input[type=text], input[type=password]
+        {
+          width: 20%;
+          padding: 12px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          resize: vertical;
+        }
+        label 
+        {
+          font-size: 20px;
+          padding: 12px 12px 12px 0;
+          color: blue;
+          font-weight: bold;
+          display: inline-block;
+        }
+        .transbox 
+        {
+            margin-left: 20%;
+            margin-right: 20%;
+            background-color: #ffffff;
+            border: 1px solid black;
+            opacity: 0.85;
+        }
+        .transbox2 
+        {
+            margin-left: 15%;
+            margin-right: 15%;
+            margin-bottom: 30px;
+            margin-top: 20px;
+            background-color: #ffffff;
+            text-align: center;
+            border: 1px solid black;
+            opacity: 0.85;
+        }
+        h1
+        {
+            text-align: center;
+            color: brown;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="transbox2">
+        <h1>Welcome to Online Books Purchase Rent System!</h1>
+    </div>
+    <div class="transbox">
+    {% for msg in get_flashed_messages() %}
+        <p style="color: red;"><b>{{ msg }}</b></p>
+    {% endfor %}
+    <form action="/login" method="POST">
+            <div>
+                <h3>Login for Admins : </h3>
+                <label for="a_username">Admin username</label><br>    
+                <input type="text" id="a_username" name="a_username" placeholder="Enter username"><br>
+                <label for="a_password">Admin password</label><br>
+                <input type="password" id="a_password" name="a_password" placeholder="Enter password"><br>
+            </div>
+            <div>
+                <h3>Login for Customers : </h3>
+                <label for="username">Customer username</label><br>
+                <input type="text" id="username" name="username" placeholder="Enter username"><br>
+                <label for="password">Customer password</label><br>
+                <input type="password" id="password" name="password" placeholder="Enter password"><br><br>
+                <input class="btn btn-primary" type="submit" value="submit"><br><br>
+            </div>
+    </form>
+    <p>New user?</p>
+    <p>Quickly create an account and enjoy reading new books!</p>
+    <a class="btn btn-primary" href="/mysignup" role="button">create account</a><br><br>
+    </div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+h1
+{
+    text-align: center;
+    color: brown;
+}
+
+
+input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+.transbox {
+    margin: 30px;
+    background-color: #ffffff;
+    border: 1px solid black;
+    opacity: 0.6;
+  }
+
+.myflex-container2
+{
+    display: flex;
+    margin: 10px 5px;
+    flex-wrap: wrap;
+    font-size: 35px;
+    text-align: center;
+    background-color: gray;
+    justify-content: space-around;
+}
+
+.item2{
+    background-color: lightcoral;
+    margin: 10px;
+    padding: 5px;
+    flex: 17%;
+    font-size: 30px;
+    text-decoration: none;
+    border-radius: 50%;
+}

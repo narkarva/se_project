@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Selection Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        body
+        {
+            text-align: center;
+        }
+        table, td, th 
+        {
+            border: 4px solid black;
+            border-collapse: collapse;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        h1
+        {
+            font-family: cursive;
+        }
+    </style>
+</head>
+<body>
+    <h1>Available Books</h1>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Customer Dashboard</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="/handprofile"> Profile </a></li>
+                <li><a href="/handhistory"> History </a></li>
+                <li><a href="/viewbooks">Book list</a></li>
+                <li><a href="/handbrent"> Books for Rent </a></li>
+                <li><a href="/handbpurchase"> Books for Purchase </a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/logout"><span class="glyphicon glyphicon-user"></span> Logout </a></li>
+            </ul>
+        </div>
+    </nav>
+    <form action="/getbook" method = "POST" >
+        {% for msg in get_flashed_messages() %}
+            <p style="color: red;"><b>{{ msg }}</b></p>
+        {% endfor %}
+        {% for i in values %}
+        <table class="table table-bordered">
+            <tr>
+                <td><b>Book ID</b></td>
+                <td>{{i.book_id}}</td>
+            </tr>
+            <tr>
+                <td><b>Book Name</b></td>
+                <td>{{i.book_name}}</td>
+            </tr>
+            <tr>
+                <td><b>Author of Book</b></td>
+                <td>{{i.author_name}}</td>
+            </tr>
+            <tr>
+                <td><b>Number of Copies available</b></td>
+                <td>{{i.stock}}</td>
+            </tr>
+            <tr>
+                <td><b>Catagory of Book (Genre)</b></td>
+                <td>{{i.catagory}}</td>
+            </tr>
+            {% if i.rent_amount %}
+                <tr>
+                    <td><b>Rent amount for book</b></td>
+                    <td>{{i.rent_amount}}</td>
+                </tr>
+                <tr>
+                    <td><b>Rent duration in days for book</b></td>
+                    <td>{{i.duration_in_days}}</td>
+                </tr>
+            {% endif %}
+            {% if i.price %}
+                <tr>
+                    <td><b>Quality type for book</b></td>
+                    <td>{{i.book_type}}</td>
+                </tr>
+                <tr>
+                    <td><b>Purchase price for book</b></td>
+                    <td>{{i.price}}</td>
+                </tr>
+            {% endif %}
+        </table>
+            {% if d_flag == 1 %}
+                <input type="number" name="{{i.book_id}}" id="{{i.book_id}}" value="1" max="{{i.stock}}" step="1">
+            {% endif %}
+        <input class="btn btn-primary" type="submit" name="select_book" value = "{{i.book_id}}"><br><br>
+        {% endfor %}
+    </form>
+</body>
+</html>

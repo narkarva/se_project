@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <style>
+        body
+        {
+            text-align: center;
+        }
+        footer 
+        {
+            text-align: center;
+            padding: 3px;
+            background-color: DarkSalmon;
+            color: white;
+        }
+        h1
+        {
+            color: white;
+            background-color: gray;
+            font-family: cursive;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Admin Dashboard</h1>
+    <!--<a href="/a_handprofile">View Profile</a>
+    <a href="/a_handbooks">Add new Books</a>
+    <a href="/a_seeall">View all Transactions</a>
+    <a href="/logout">Logout</a>-->
+    {% for msg in get_flashed_messages() %}
+        <p style="color: red;"><b>{{ msg }}</b></p>
+    {% endfor %}
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Admin Dashboard</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="/a_handprofile"> View Profile </a></li>
+                <li><a href="/a_handbooks"> Add new books </a></li>
+                <li><a href="/fetchadm"> Update transaction details </a></li>
+                <li><a href="/a_seeall"> View all Transactions </a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/logout"><span class="glyphicon glyphicon-user"></span> Logout </a></li>
+            </ul>
+        </div>
+    </nav>
+    <img src="/static/newbook1.jpeg" style="width: 80%; height: 500px; margin-bottom: 20px">
+    <footer>
+        <p>Author: Prathamesh Mone and Varun Narkar<br>
+        <a href="mailto:prathamesh@gmail.com">prathamesh@gmail.com</a></p>
+        <a href="mailto:varun@gmail.com">varun@gmail.com</a>
+    </footer>
+</body>
+</html>

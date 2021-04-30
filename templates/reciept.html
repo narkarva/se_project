@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Final Reciept Page</title>
+</head>
+<body>
+    <h1>Your Final Order Summary is as follows</h1>
+    <h3>Customer Details</h3>
+    <p><b>Customer full name : </b>{{cvalue.full_name}}</p>
+    <p><b>Customer address : </b>{{cvalue.address}}</p>
+    <h3>Book Details</h3>
+    <p><b>Book name : </b>{{bvalue.book_name}}</p>
+    <p><b>Author name : </b>{{bvalue.author_name}}</p>
+    <p><b>Total amount paid : </b>{{pvalue.price}}</p>
+    {% if d_flag == 0 %}
+        <h3>Book Rented</h3>
+        <p><b>Duration of rent in days : </b>{{bvalue.duration_in_days}}</p>
+        <p><b>Rent amount paid : </b>{{pvalue.price}}</p>
+    {% endif %}
+    {% if d_flag == 1 %}
+        <h3>Book Purchased</h3>
+        <p><b>Number of Copies : </b>{{pvalue.quantity}}</p>
+        <p><b>Total amount paid : </b>{{pvalue.price}}</p>
+    {% endif %}
+    <h3>Transaction Details</h3>
+    <p><b>Transaction ID : </b>{{pvalue.transaction_id}}</p>
+    {% if CC == 2 %}
+        <p>UPI mode of payment used</p>
+        <p><b>Mobile Number used : </b>{{U_list[0]}}</p>
+        <p><b>Name of UPI account holder : </b>{{U_list[1]}}</p>
+    {% endif %}
+    {% if CC == 0 %}
+        <p>Credit Card Used for payment</p>
+        <p><b>Card Holder's name : </b>{{C_list[0]}}</p>
+        <p><b>Card Number : </b>{{C_list[1]}}</p>
+    {% endif %}
+    {% if CC == 1 %}
+        <p>Debit Card Used for payment</p>
+        <p><b>Card Holder's name : </b>{{C_list[0]}}</p>
+        <p><b>Card Number : </b>{{C_list[1]}}</p>
+    {% endif %}
+    <p>Thank You for Visiting!</p>
+    <button onclick="window.print()">Download</button>
+    <form action="/store" method="POST">
+        <input type="submit" name="submit" value="dashboard">
+    </form>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payment Details Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        body
+        {
+            text-align: center;
+        }
+        table, td, th 
+        {
+            border: 4px solid black;
+            border-collapse: collapse;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .changepwd 
+        {
+            margin-left: 30%;
+            margin-right: 30%;
+            background-color: white;
+            border: 1px solid black;
+            opacity: 0.85;
+            margin-bottom: 20px;
+        }
+        input[type=password]
+        {
+            width: 40%;
+            padding: 12px;
+            border: 1px solid black;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        label 
+        {
+            font-size: 20px;
+            padding: 12px 12px 12px 0;
+            color: blue;
+            font-weight: bold;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <h1>Fill Payment Details</h1>
+    {% for i in values %}
+        <table class="table table-bordered">
+            <tr>
+                <td><b>Book ID</b></td>
+                <td>{{i.book_id}}</td>
+            </tr>
+            <tr>
+                <td><b>Book Name</b></td>
+                <td>{{i.book_name}}</td>
+            </tr>
+            <tr>
+                <td><b>Author of Book</b></td>
+                <td>{{i.author_name}}</td>
+            </tr>
+            <tr>
+                <td><b>Number of Copies available</b></td>
+                <td>{{i.stock}}</td>
+            </tr>
+            <tr>
+                <td><b>Catagory of Book (Genre)</b></td>
+                <td>{{i.catagory}}</td>
+            </tr>
+            {% if i.rent_amount %}
+                <tr>
+                    <td><b>Rent amount for book</b></td>
+                    <td>{{i.rent_amount}}</td>
+                </tr>
+                <tr>
+                    <td><b>Rent duration in days for book</b></td>
+                    <td>{{i.duration_in_days}}</td>
+                </tr>
+            {% endif %}
+            {% if i.price %}
+                <tr>
+                    <td><b>Quality type for book</b></td>
+                    <td>{{i.book_type}}</td>
+                </tr>
+                <tr>
+                    <td><b>Purchase price for book</b></td>
+                    <td>{{i.price}}</td>
+                </tr>
+            {% endif %}
+        </table>
+    {% endfor %}
+    <div class="changepwd">
+        {% for msg in get_flashed_messages() %}
+                <p style="color: red;"><b>{{ msg }}</b></p>
+        {% endfor %}
+        <form action="/dopayment" method="POST"><br><br>
+            <label for="mode">Mode of Payment</label><br>
+            <select name="mode" id="mode">
+                <option value="UPI">UPI</option>
+                <option value="Credit Card">Credit Card</option>
+                <option value="Debit Card">Debit Card</option>
+            </select><br><br>
+            <label for="total">Total price</label><br>
+            <input type="number" name="total" id="total" value="{{total_price}}" disabled><br><br>
+            <label for="chname">Card holder's Name</label><br>
+            <input type="text" name="chname" id="chname" placeholder="Enter card holder's name"><br><br>
+            <label for="cardnum">Card Number</label><br>
+            <input type="number" name="cardnum" id="cardnum" placeholder="Enter card number here"><br><br>
+            <label for="expdate">Expiry date on Card</label><br>
+            <input type="text" name="expdate" id="expdate" placeholder="Enter expiry date"><br><br>
+            <label for="cvv">CVV Number</label><br>
+            <input type="password" name="cvv" id="cvv" placeholder="Enter CVV number" max="999"><br><br>
+            <label for="UPIname">UPI Holder's Name</label><br>
+            <input type="text" name="UPIname" id="UPIname" placeholder="Enter name of UPI account holder"><br><br> 
+            <label for="UPInm">UPI Mobile Number</label><br>
+            <input type="number" name="UPInm" id="UPInm" placeholder="Enter mobile number linked to UPI"><br><br>
+            <label for="delivery">Delivery option</label><br>
+            <select name="delivery" id="delivery">
+                <option value="Delivery">Delivery</option>
+                <option value="No delivery">No delivery</option>
+            </select><br><br>
+            <h3>Re-enter the CAPTCHA in the textbox below!</h3>
+            <p>Convert the captcha in four digit number before entering it, preceed zeros if required.</p>
+            <h4><b>{{ random_num }}</b></h4>
+            <input type="number" name="OTP" id="OTP" placeholder="Verify number seen on screen"><br><br>
+            <input class="btn btn-primary" type="submit" name="submit" value="submit">
+        </form>
+    </div>
+</body>
+</html>
+

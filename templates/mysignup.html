@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Signup Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+        body 
+        {
+            background-image: url('/static/book.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            text-align: center;
+            background-position: center center;
+        }
+        input[type=text], input[type=password]
+        {
+          width: 40%;
+          padding: 12px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          resize: vertical;
+        }
+        label 
+        {
+          font-size: 20px;
+          padding: 12px 12px 12px 0;
+          color: blue;
+          font-weight: bold;
+          display: inline-block;
+        }
+        .changepwd 
+        {
+            margin-left: 30%;
+            margin-right: 30%;
+            background-color: white;
+            border: 1px solid black;
+            opacity: 0.85;
+            margin-bottom: 20px;
+        }
+        .transbox2 
+        {
+            margin-left: 15%;
+            margin-right: 15%;
+            margin-bottom: 30px;
+            margin-top: 20px;
+            background-color: #ffffff;
+            text-align: center;
+            border: 1px solid black;
+            opacity: 0.85;
+        }
+        h1
+        {
+            text-align: center;
+            color: brown;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="transbox2">
+        <h1>New Account Creation</h1>
+    </div>
+    <div class="changepwd">
+        <p>Please fill the following information to create an account</p>
+        {% for msg in get_flashed_messages() %}
+            <p style="color: red;"><b>{{ msg }}</b></p>
+        {% endfor %}
+        <form action="/signup" method="POST"><br>
+            <label for="full_name">Full name</label><br>
+            <input type="text" id="full_name" name="full_name" placeholder="Enter your full name" required><br><br>
+            <label for="DOB"> date of birth in format <b>dd/mm/yyyy</b></label><br>
+            <input type="text" id="DOB" name="DOB" placeholder="Enter DOB" required><br><br>
+            <label for="email_id">Enter your email</label><br>
+            <input type="email" id="email_id" name="email_id" placeholder="Enter valid email id" required><br><br>
+            <label for="mob_number">Mobile number</label><br>
+            <input type="number" id="mob_number" name="mob_number" placeholder="Enter valid mobile number" minlength="10" maxlength="10" required><br><br>
+            <label for="address">Enter your address</label><br>
+            <input type="text" id="address" name="address" placeholder="Enter your address" required><br><br>
+            <label for="username">Set up an username</label><br>
+            <input type="text" id="username" name="username" placeholder="Set up a username" required><br><br>
+            <label for="password">Set up a password for your account</label><br>
+            <input type="password" id="password" name="password" placeholder="Set up password" required><br><br>
+            <label for="confpassword">Confirm your set up password</label><br>
+            <input type="password" id="confpassword" name="confpassword" placeholder="Confirm your password" required><br><br>
+            <input class="btn btn-primary" type="submit" value="submit"><br><br>
+        </form>
+    </div>
+</body>
+</html>

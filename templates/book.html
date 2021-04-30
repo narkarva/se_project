@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+<head>
+    <title>Add new book</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        body
+        {
+            text-align: center;
+        }
+        input[type=password], input[type=text], input[type=number]
+        {
+        width: 40%;
+        padding: 12px;
+        border: 1px solid black;
+        border-radius: 4px;
+        resize: vertical;
+        }
+        label 
+        {
+          font-size: 20px;
+          padding: 12px 12px 12px 0;
+          color: blue;
+          font-weight: bold;
+          display: inline-block;
+        }
+        .changepwd 
+        {
+            margin-left: 30%;
+            margin-right: 30%;
+            background-color: white;
+            border: 1px solid black;
+            opacity: 0.85;
+            margin-bottom: 20px;
+        }
+        h1
+        {
+            font-family: cursive;
+        }
+    </style>
+</head>
+<body>
+    <h1>Add new books</h1>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">WebSiteName</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="/a_handprofile"> View Profile </a></li>
+                <li class="active"><a href="/a_handbooks"> Add new books </a></li>
+                <li><a href="/fetchadm"> Update transaction details </a></li>
+                <li><a href="/a_seeall"> View all Transactions </a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/logout"><span class="glyphicon glyphicon-user"></span> Logout </a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="changepwd">
+        {% for msg in get_flashed_messages() %}
+            <p style="color: red;"><b>{{ msg }}</b></p>
+        {% endfor %}
+        <form action="/a_hand_book" method = "POST"><br><br>
+            <label for="book_name">Name of book</label><br>
+            <input type = "text" name="book_name" id="book_name" placeholder="Enter book name"><br><br>
+            <label for="author_name">Author Name</label><br>
+            <input type="text" name="author_name" id="author_name" placeholder = "Enter author name"><br><br>
+            <label for="stock">Available Stock</label><br>
+            <input type="number" name="stock" id="stock" placeholder = "Enter number of books"><br><br>
+            <label for="catagory">Catagory (Genre) of Book</label><br>
+            <input type="text" name="catagory" id="catagory" placeholder = "Enter genre of book"><br><br>
+            <label for="duration_in_days">Rent duration in days (only if book can be rented)</label><br>
+            <input type="number" name="duration_in_days" id="duration_in_days" placeholder="Enter duration in days"><br><br>
+            <label for="rent_amount">Rent amount (only if book can be rented)</label><br>
+            <input type="number" name="rent_amount" id="rent_amount" placeholder="Enter rent amount"><br><br>
+            <label for="book_type">Quality type for Book (only if book can be purchased)</label><br>
+            <input type = "text" name="book_type" id="book_type" placeholder="Enter book type"><br><br>
+            <label for="price">Price (only if book can be purchased)</label><br>
+            <input type="number" name="price" id="price" placeholder="Enter price of book"><br><br>
+            <input class="btn btn-primary" type="submit" name="submit" value="Submit">
+            <input class="btn btn-primary" type="submit" name="submit" value="Back"><br><br>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Profile</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        body
+        {
+            text-align: center;
+        }
+        table, td, th 
+        {
+            border: 4px solid black;
+            border-collapse: collapse;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .changepwd 
+        {
+            margin-left: 30%;
+            margin-right: 30%;
+            background-color: white;
+            border: 1px solid black;
+            opacity: 0.85;
+            margin-bottom: 20px;
+        }
+        input[type=password]
+        {
+        width: 40%;
+        padding: 12px;
+        border: 1px solid black;
+        border-radius: 4px;
+        resize: vertical;
+        }
+        label 
+        {
+          font-size: 20px;
+          padding: 12px 12px 12px 0;
+          color: blue;
+          font-weight: bold;
+          display: inline-block;
+        }
+        h1
+        {
+            font-family: cursive;
+        }
+    </style>
+</head>
+<body>
+    <h1>Admin profile for {{userinfo.admin_name}}</h1>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Admin Dashboard</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/a_handprofile"> View Profile </a></li>
+                <li><a href="/a_handbooks"> Add new books </a></li>
+                <li><a href="/fetchadm"> Update transaction details </a></li>
+                <li><a href="/seeall"> View all Transactions </a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/logout"><span class="glyphicon glyphicon-user"></span> Logout </a></li>
+            </ul>
+        </div>
+    </nav>
+    <table class="table table-bordered">
+        <tr>
+            <td><b>Admin Full Name</b></td>
+            <td>{{userinfo.admin_name}}</td>
+        </tr>
+        <tr>
+            <td><b>Admin mobile number</b></td>
+            <td>{{userinfo.mob_number}}</td>
+        </tr>
+        <tr>
+            <td><b>Admin login username</b></td>
+            <td>{{userinfo.a_username}}</td>
+        </tr>
+        <tr>
+            <td><b>Admin login password</b></td>
+            <td>{{userinfo.a_password}}</td>
+        </tr>
+    </table>
+    <br>
+    <div class="changepwd">
+        {% for msg in get_flashed_messages() %}
+            <p style="color: red;"><b>{{ msg }}</b></p>
+        {% endfor %}
+        <br>
+        <form action="/a_cngpassword" method="POST"><br><br>
+            <label for="oldpassword">Old password</label><br>
+            <input type="password" name="oldpassword" id="oldpassword" placeholder="Enter old password"><br><br>
+            <label for="newpassword">New password</label><br>
+            <input type="password" name="newpassword" id="newpassword" placeholder="Set up password"><br><br>
+            <label for="confnewpass">Confirm New password</label><br>
+            <input type="password" name="confnewpass" id="confnewpass" placeholder="Confirm new password"><br><br>
+            <input class="btn btn-primary" type="submit" name="proceed" value="Change Password">
+            <input class="btn btn-primary" type="submit" name="proceed" value="Back"><br><br>
+        </form>
+    </div>
+</body>
+</html>
